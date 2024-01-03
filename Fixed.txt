@@ -1,0 +1,13 @@
+def weather_model(time):
+  a = 0.01
+  b = 0.5
+  c = 20
+  temperature = a * time**2 + b * time + c
+  return temperature
+def main():
+  time_values = [0, 1, 2, 3, 4]
+  for time in time_values:
+      temperature = weather_model(time)
+      print(f"At time {time} hours, the temperature is {temperature} degrees Celsius.")
+if __name__ == "__main__":
+  main()

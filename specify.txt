@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+import numpy as np
+def quadratic_model(x, a, b, c):
+    return a * x**2 + b * x + c
+def plot_weather_model(ax, x_values, a, b, c, label):
+    y_values = quadratic_model(x_values, a, b, c)
+    ax.plot(x_values, y_values, label=label)
+def main():
+    hardcoded_a = 2.0
+    hardcoded_b = -3.0
+    hardcoded_c = 4.0
+    x_values = np.linspace(0, 10, 100)
+    fig, ax = plt.subplots()
+    plot_weather_model(ax, x_values, hardcoded_a, hardcoded_b, hardcoded_c, 'Hardcoded Model')
+    user_a = float(input("Enter the coefficient a: "))
+    user_b = float(input("Enter the coefficient b: "))
+    user_c = float(input("Enter the coefficient c: "))
+    plot_weather_model(ax, x_values, user_a, user_b, user_c, 'User Input Model')
+    ax.set_title("Quadratic Weather Models")
+    ax.set_xlabel("Time")
+    ax.set_ylabel("Temperature")
+    ax.legend()
+    ax.grid(True)
+    plt.show()
+if __name__ == "__main__":
+    main()

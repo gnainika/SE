@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+import numpy as np
+def quadratic_model(x, a, b, c):
+    return a * x**2 + b * x + c
+def read_coefficients_from_file(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        a = float(lines[0].strip())
+        b = float(lines[1].strip())
+        c = float(lines[2].strip())
+    return a, b, c
+def main():
+    coefficients_file = "coefficients.txt"
+    a, b, c = read_coefficients_from_file(coefficients_file)
+    x_values = np.linspace(0, 10, 100)
+    y_values = quadratic_model(x_values, a, b, c)
+    plt.plot(x_values, y_values, label=f"Weather Model: {a}*x^2 + {b}*x + {c}")
+    plt.title("Quadratic Weather Model")
+    plt.xlabel("Time")
+    plt.ylabel("Temperature")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+if __name__ == "__main__":
+    main()
